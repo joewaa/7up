@@ -1,16 +1,16 @@
-{{- if .Values.containerConfig }}
+{{- if .Values.appProperties }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "test-nginx-chart.fullname" . }}-config
+  name: appProperties-config
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}
     chart: "{{ .Chart.Name }}"
     app: "{{ template "test-nginx-chart.fullname" . }}"
 data:
-{{- range $path, $config := .Values.containerConfig }}
+{{- range $path, $config := .Values.appProperties }}
   {{ $path }}: |
 {{ $config | indent 4 -}}
 {{- end -}}
