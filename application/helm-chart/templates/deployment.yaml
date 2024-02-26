@@ -57,7 +57,7 @@ spec:
               {{- toYaml .Values.volumeMounts | nindent 12 }}
             {{- end }}
             {{- range $path, $config := .Values.appProperties }}
-            - name: appProperties
+            - name: app-properties
               mountPath: {{ $path }}
               subPath: {{ $path }}
             {{- end -}}
@@ -68,7 +68,7 @@ spec:
           {{- toYaml .Values.volumes | nindent 8 }}
         {{- end }}
         {{- if .Values.appProperties }}
-        - name: appProperties
+        - name: app-properties
           configMap:
             name: app-properties-config
         {{- end }}
