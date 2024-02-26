@@ -70,7 +70,7 @@ spec:
         {{- if .Values.appProperties }}
         - name: appProperties
           configMap:
-            name: appPropertiesConfig
+            name: app-properties-config
         {{- end }}
         
       {{- end }}
