@@ -58,7 +58,7 @@ spec:
             {{- end }}
             {{- range $path, $config := .Values.appProperties }}
             - name: app-properties
-              mountPath: {{ $path }}
+              mountPath: /app/{{ $path }}
               subPath: {{ $path }}
             {{- end -}}
           {{- end }}
@@ -70,7 +70,7 @@ spec:
         {{- if .Values.appProperties }}
         - name: app-properties
           configMap:
-            name: app-properties-config
+            name: {{ include "test-nginx-chart.fullname" . }}-cm
         {{- end }}
         
       {{- end }}
