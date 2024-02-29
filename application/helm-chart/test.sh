@@ -13,7 +13,12 @@ helm template demo  . \
   ' \
   --set appProperties."/apps/dev/dev\.properites"='
   helloworld
-  '  
+  ' \
+  --set envs[0].name="SPRINT_PROFILES_ACIVE" \
+  --set envs[0].value="app\,app\,app-qa" \
+  --set envs[1].name="U3_MAXIMUM_MEMORY" \
+  --set envs[1].value="769m"
+
   # --set volumeMounts[0].name=foo \
   # --set volumeMounts[0].mountPath="/etc/foo" \
   # --set volumeMounts[0].readOnly=true \
